@@ -1,8 +1,10 @@
-# open_prescribing_scotland
+# Open Prescribing Scotland
 
-Prescribing Data (main table)\
-with API\
-https://www.opendata.nhs.scot/dataset/prescriptions-in-the-community
+The aim of this project is to create an easy-to-use web interface to prescribing data in Scotland.
+
+The relevant datasets are:
+
+* [Prescribing Data](https://www.opendata.nhs.scot/dataset/prescriptions-in-the-community):
   - HBT 
   - GPPractice
   - BNFItemCode
@@ -14,17 +16,5 @@ https://www.opendata.nhs.scot/dataset/prescriptions-in-the-community
   - GrossIngredientCost
   - PaidDate
 
-Health Board Data (address)\
-with API\
-https://www.opendata.nhs.scot/dataset/geography-codes-and-labels/resource/652ff726-e676-4a20-abda-435b98dd7bdc
-<br>
-Link HBT to name of areas
-
-GP Practices and List sizes (GP)\
-with API\
-https://www.opendata.nhs.scot/dataset/gp-practice-contact-details-and-list-sizes
-<br>
-Link GPPractice to PostCode, Address
-
-Terms:
-GP Practice List Sizes - number of registered patients
+* [Health Boards](https://www.opendata.nhs.scot/dataset/geography-codes-and-labels/resource/652ff726-e676-4a20-abda-435b98dd7bdc) with their corresponding name and the country code for Scotland
+* [GP Practices](https://www.opendata.nhs.scot/dataset/gp-practice-contact-details-and-list-sizes) Contact Details and List Sizes

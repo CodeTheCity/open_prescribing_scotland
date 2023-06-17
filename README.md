@@ -3,7 +3,7 @@
 Prescribing Data (main table)\
 with API\
 https://www.opendata.nhs.scot/dataset/prescriptions-in-the-community
-  - HBT
+  - HBT 
   - GPPractice
   - BNFItemCode
   - BNFItemDescription
@@ -25,3 +25,6 @@ with API\
 https://www.opendata.nhs.scot/dataset/gp-practice-contact-details-and-list-sizes
 <br>
 Link GPPractice to PostCode, Address
+
+Terms:
+GP Practice List Sizes - number of registered patients

@@ -43,8 +43,7 @@ source venv/bin/activate
 ```
 This needs to be done in every shell that should use our newly created environment.
 
-We suggest installing the Python dependencies from the openprescribingscotland folder through the `requirements/base.
-txt` file:
+We suggest installing the Python dependencies from the openprescribingscotland folder through the `requirements/base.txt` file:
 ```shell
 pip install -r requirements/base.txt
 ```

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<title>Open prescription scotland</title>
+</head>
+
+<body>
+    <header>
+        <h1>Open prescription scotland</h1>
+    </header>
+
+<main>
+
+    <div class="buttons">
+        <button class="query-button">Query Data</button>
+        <button class="analytics-button">Perform Data Analytics</button>
+    </div>
+
+    <div class="search-boxes" style="display: none;">
+        <input type="text" class="search-input" placeholder="Search Drugs"><br>
+        <input type="text" class="search-input" placeholder="Search Location"><br>
+        <input type="text" class="search-input" placeholder="Search Time"><br>
+    </div>
+</main>
+
+
+    <footer>
+        <p>&copy; Developed by open_prescription_scotland group</p>
+    </footer>
+
+<script>
+    document.querySelector('.query-button').addEventListener('click', function() {
+        document.querySelector('.search-boxes').style.display = 'block';
+    });
+</script>
+</body>
+</html>
+

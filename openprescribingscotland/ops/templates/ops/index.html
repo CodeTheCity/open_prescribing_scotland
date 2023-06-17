@@ -21,7 +21,11 @@
     </div>
 
     <div class="search-boxes" style="display: none;">
-        <input type="text" class="search-input" placeholder="Search Drugs"><br>
+        <form method = "post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="search-input" placeholder="Search Drugs" value = "Submit">
+        </form>
         <input type="text" class="search-input" placeholder="Search Location"><br>
         <input type="text" class="search-input" placeholder="Search Time"><br>
     </div>
@@ -39,4 +43,3 @@
 </script>
 </body>
 </html>
-

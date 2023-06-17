@@ -16,6 +16,8 @@ The relevant datasets are:
   - GrossIngredientCost
   - PaidDate
 
+* [Glossary of Terms](https://www.isdscotland.org/health-topics/prescribing-and-medicines/_docs/Open_Data_Glossary_of_Terms.pdf?1)
+
 * [Health Boards](https://www.opendata.nhs.scot/dataset/geography-codes-and-labels/resource/652ff726-e676-4a20-abda-435b98dd7bdc) with their corresponding name and the country code for Scotland
 * [GP Practices](https://www.opendata.nhs.scot/dataset/gp-practice-contact-details-and-list-sizes) Contact Details and List Sizes
 

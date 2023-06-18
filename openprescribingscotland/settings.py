@@ -26,8 +26,9 @@ SECRET_KEY = 'django-insecure-w(!0m0a=_v4rd6*!@gytv%as@bgo+ip(l%w5ut+ahxu++oj)*%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1','open-prescribing-scotland.onrender.com']
 
+CSRF_TRUSTED_ORIGINS = ['https://open-prescribing-scotland.onrender.com/']
 
 # Application definition
 

@@ -26,8 +26,9 @@ SECRET_KEY = 'django-insecure-w(!0m0a=_v4rd6*!@gytv%as@bgo+ip(l%w5ut+ahxu++oj)*%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1','open-prescribing-scotland.onrender.com']
 
+CSRF_TRUSTED_ORIGINS = ['https://open-prescribing-scotland.onrender.com/']
 
 # Application definition
 
@@ -129,6 +130,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Bootstrap
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-#
-# MEDIA_ROOT = "ops/static/media"
-# MEDIA_URL = "/ops/static/media/"

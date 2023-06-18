@@ -14,6 +14,13 @@
             <input type="submit" class="btn btn-primary" placeholder="Search Drugs" value = "Submit Drug Search">
         </form>
     </div>
+{#        <div class="vis-boxes" style="display: none;">#}
+{#        <form method="post" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            {% crispy form %}#}
+{#            <input type="submit" class="btn btn-primary" placeholder="Get visualisation" value = "Get visualisation">#}
+{#        </form>#}
+{#    </div>#}
     <div>
         <script>
             document.querySelector('.query-button').addEventListener('click', function (event) {
@@ -21,6 +28,11 @@
                 console.log("Button clicked");
                 document.querySelector('.search-boxes').style.display = 'block';
             });
+            {#document.querySelector('.analytics-button').addEventListener('click', function (event) {#}
+            {#    event.preventDefault();#}
+            {#    console.log("Button clicked");#}
+            {#    document.querySelector('.vis-boxes').style.display = 'block';#}
+            {#});#}
         </script>
     </div>
 {% endblock all %}

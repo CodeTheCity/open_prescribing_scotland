@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} - Vis{% endblock title %}
+{% block all %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% crispy form %}
+        <input type="submit" class="btn btn-primary" placeholder="Choose Health Board" value="Get a chart!">
+    </form>
+{% endblock all %}

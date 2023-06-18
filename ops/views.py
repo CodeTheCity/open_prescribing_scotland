@@ -1,11 +1,15 @@
 from django.http import HttpResponse
+from django.conf import settings
 from django.shortcuts import render, redirect
 import json
-from .forms import InputForm, EntryForm
+from .forms import InputForm, EntryForm, VisForm
 import pandas as pd
 import time
 import requests
 import json
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 
 resource_id = {
     "January 2022": "53a53d61-3b3b-4a12-888b-a788ce13db9c",
@@ -26,6 +30,8 @@ resource_id = {
 def get_prescription_data():
     """Uses the OpenData API to access the prescribing data for 2022."""
 
+    # TODO: eventually make sure that this is only loaded once to save time
+
     all_res = []
     for value in resource_id.values():
         url = 'https://www.opendata.nhs.scot/api/3/action/datastore_search?resource_id=' + value
@@ -38,18 +44,58 @@ def get_prescription_data():
     return df_res
 
 
-def vis(request):
-    print("Accessing vis...")
+def get_healthboard_data():
+    """Uses the OpenData API to access the health board data for 2022."""
+
+    resource_id = "652ff726-e676-4a20-abda-435b98dd7bdc"  # Eventually, we will have to get this from a mapping
+    r = requests.get(f"https://www.opendata.nhs.scot/api/3/action/datastore_search?resource_id={resource_id}")
+    data = json.loads(r.text)["result"]
+    health_boards = pd.DataFrame(data["records"])
+
+    return health_boards
+
+
+def viz(request):
+    print("Accessing visualisation...")
     if request.method == "POST":
-        form = EntryForm(request.POST)
+        form = VisForm(request.POST)
         # TODO: select drug and get graph for every health board? or also choose health board?
         if form.is_valid():
             df_res = get_prescription_data()
-
             drug_name = request.POST.get("drug_name")
-            df_res = df_res.loc[df_res['BNFItemDescription'] == drug_name]
+            df_res = df_res[df_res["BNFItemDescription"].str.startswith(drug_name)]
 
-            # TODO: vis
+            df_hb = get_healthboard_data()
+            hb_name = request.POST.get("hb_name")
+            df_hb = df_hb.set_index("HBName")
+            hb_id = df_hb.loc[hb_name]["HB"]
+            df_res = df_res[df_res["HBT"] == hb_id]
+
+            fig, ax = plt.subplots()
+            df_res["PaidDateMonth"] = df_res["PaidDateMonth"].astype("string")
+            p = sns.histplot(data=df_res, x="PaidDateMonth", ax=ax)
+            ax.set_xticklabels(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            ax.set_xlabel("Month of Purchase")
+            plt.title(f"Number of Purchase Occasions for {drug_name} in 2022")
+
+            rel_plot_path = str(settings.STATIC_URL) + "media/plot.png"
+            print(f"Saving figure to {rel_plot_path}!")
+            plt.savefig(str(settings.BASE_DIR) + rel_plot_path)
+            time.sleep(10)
+
+            return render(
+                request,
+                f"ops/show.html",
+                {
+                    "form": form,
+                    "plot": rel_plot_path,
+                },
+            )
+    else:
+        print("Getting viz page...")
+        context = {}
+        context["form"] = VisForm()
+        return render(request, "ops/viz.html", context)
 
 
 def index(request):
@@ -62,8 +108,8 @@ def index(request):
             df_res = get_prescription_data()
 
             drug_name = request.POST.get("drug_name")
-            # df_res = df_res[df_res["BNFItemDescription"].str.startswith(drug_name)]
-            df_res = df_res.loc[df_res['BNFItemDescription'] == drug_name]  # Not final result
+            print(f"Drug name: {drug_name}")
+            df_res = df_res[df_res["BNFItemDescription"].str.startswith(drug_name)]
             print(df_res['PaidQuantity'].sum())
             return HttpResponse(f"Number of {drug_name} drugs for which dispensers have been reimbursed :"
                                 f" {df_res['PaidQuantity'].sum()}")
@@ -81,10 +127,8 @@ def home(request):
         if form.is_valid():
             print("Querying health boards...")
 
-            resource_id = "652ff726-e676-4a20-abda-435b98dd7bdc"  # Eventually, we will have to get this from a mapping
-            r = requests.get(f"https://www.opendata.nhs.scot/api/3/action/datastore_search?resource_id={resource_id}")
-            data = json.loads(r.text)["result"]
-            health_boards = pd.DataFrame(data["records"])
+            health_boards = get_healthboard_data()
+
             health_boards = health_boards.set_index("HB")
 
             area_code = request.POST.get("area_code")

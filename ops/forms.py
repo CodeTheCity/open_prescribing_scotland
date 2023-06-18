@@ -1,6 +1,9 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Field
+import requests
+import json
+import pandas as pd
 
 
 AREA_CODES = (
@@ -31,7 +34,37 @@ class EntryForm(forms.Form):
         self.helper = FormHelper()
         self.helper.form_tag = False
 
-    drugs = forms.MultipleChoiceField(
+    drug_name = forms.MultipleChoiceField(
         label="Drugs",
         choices=DRUG_NAME,
     )
+
+
+def get_health_boards():
+    url = "https://www.opendata.nhs.scot/api/3/action/datastore_search?resource_id=652ff726-e676-4a20-abda-435b98dd7bdc"
+    r = requests.get(url)
+    content = json.loads(r.text)
+    df_hb = pd.DataFrame(pd.json_normalize(pd.DataFrame([content]).result[0])['records'][0])
+
+    HEALTH_BOARDS = tuple(zip(list(df_hb["HBName"]), list(df_hb["HBName"])))
+
+    return HEALTH_BOARDS
+
+
+class VisForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+
+    drug_name = forms.MultipleChoiceField(
+        label="Drugs",
+        choices=DRUG_NAME,
+    )
+
+    hb_name = forms.MultipleChoiceField(
+        label="Health Board",
+        choices=get_health_boards(),
+    )
+
+    # TODO: alternative (!) GP practices selection

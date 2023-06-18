@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} - Vis{% endblock title %}
+{% block all %}
+    Path: {{ plot }} <br>
+    <img src="{{ plot }}" class="img-fluid">
+{% endblock all %}

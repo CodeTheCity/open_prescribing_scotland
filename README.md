@@ -2,6 +2,12 @@
 
 The aim of this project is to create an easy-to-use web interface to prescribing data in Scotland.
 
+## Deployment
+The web application is deployed on Render!
+<br>
+Please click this link to access: https://open-prescribing-scotland.onrender.com/
+
+## Datasets
 The relevant datasets are:
 
 * [Prescribing Data](https://www.opendata.nhs.scot/dataset/prescriptions-in-the-community):
@@ -45,12 +51,14 @@ source venv/bin/activate
 ```
 This needs to be done in every shell that should use our newly created environment.
 
-We suggest installing the Python dependencies from the openprescribingscotland folder through the `requirements/base.txt` file:
+We suggest installing the Python dependencies from the openprescribingscotland folder through the `requirements.txt` file:
 ```shell
-pip install -r requirements/base.txt
+pip install -r requirements.txt
 ```
 
 Once the repository is cloned, the Django Webserver can be started with:
 ```shell
 python manage.py runserver
 ```
+
+

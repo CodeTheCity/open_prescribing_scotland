@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.urls import include, path
-from ops.views import home, index
+import ops.views
+
 
 urlpatterns = [
-    path("", include("ops.urls")),
+    # path("", include("ops.urls")),
     path("admin/", admin.site.urls),
-    path("index", index, name="index"),
+    path("", ops.views.home, name="home"),
+    path("index", ops.views.index, name="index"),
 ]

@@ -50,7 +50,7 @@ We suggest installing the Python dependencies from the openprescribingscotland f
 pip install -r requirements/base.txt
 ```
 
-Once the repository is cloned, the Django Webserver can be started from the openprescribingscotland folder with:
+Once the repository is cloned, the Django Webserver can be started with:
 ```shell
 python manage.py runserver
 ```

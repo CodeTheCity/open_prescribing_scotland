@@ -1,5 +1,22 @@
-<form method = "post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value = "Submit">
-</form>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} - Home test{% endblock title %}
+{% block all %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% crispy form %}
+        <input type="submit" class="btn btn-primary" placeholder="Search Drugs" value="Submit Drug Search">
+    </form>
+    {#<form method = "post">#}
+{#    {% csrf_token %}#}
+{#    {{ form }}#}
+{#    <input type="submit" value = "Submit">#}
+{#</form>#}
+{% endblock all %}
+
+{#<form method = "post">#}
+{#    {% csrf_token %}#}
+{#    {{ form }}#}
+{#    <input type="submit" value = "Submit">#}
+{#</form>#}

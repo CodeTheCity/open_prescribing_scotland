@@ -2,6 +2,12 @@
 
 The aim of this project is to create an easy-to-use web interface to prescribing data in Scotland.
 
+## Deployment
+The web application is deployed on Render!
+<br>
+Please click this link to access: https://open-prescribing-scotland.onrender.com/
+
+## Datasets
 The relevant datasets are:
 
 * [Prescribing Data](https://www.opendata.nhs.scot/dataset/prescriptions-in-the-community):
@@ -55,7 +61,4 @@ Once the repository is cloned, the Django Webserver can be started with:
 python manage.py runserver
 ```
 
-## Deployment
-The web application is deployed on Render!
-<br>
-Please click this link to access: https://open-prescribing-scotland.onrender.com/
+

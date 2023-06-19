@@ -1,0 +1,37 @@
+1: Gastro-Intestinal System
+2: Cardiovascular System
+   2.5: Hypertension and heart failure
+3: Respiratory System
+   3.4: Antihistamines, hyposensitisation and allergic emergencies
+4: Central Nervous System
+   4.1: Hypnotics and anxiolytics
+   4.2: Drugs used in psychoses and related disorders
+   4.3: Antidepressant drugs
+   4.4: CNS stimulants and drugs used for ADHD
+   4.5: Drugs used in the treatment of obesity
+   4.6: Drugs used in nausea and vertigo
+   4.7: Analgesics
+   4.8: Antiepileptic drugs
+   4.9: Drugs used in parkinsonism and related disorders
+   4.10: Drugs used in substance dependence
+      4.10.1: Alcohol dependence
+      4.10.2: Nicotine dependence
+      4.10.3: Opioid dependence
+   4.11: Drugs for dementia
+5: Infections
+6: Endocrine System
+7: Obstetrics, Gynaecology and Urinary-Tract Disorders
+8: Malignant Disease and Immunosuppression
+9: Nutrition and Blood
+10: Musculoskeletal and Joint Diseases
+11: Eye
+12: Ear, Nose and Oropharynx
+13: Skin
+14: Immunological Products and Vaccines
+15: Anaesthesia
+18: Preparations used in Diagnosis
+19: Other Drugs and Preparations
+20: Dressings
+21: Appliances
+22: Incontinence Appliances
+23: Stoma Appliances

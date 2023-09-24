@@ -2,6 +2,9 @@
 
 The aim of this project is to create an easy-to-use web interface to prescribing data in Scotland.
 
+> [!NOTE]  
+> This project is now being maintained as part of the Open Data Scotland community at [OpenDataScotland/Open_Prescribing_Scotland](https://github.com/OpenDataScotland/Open_Prescribing_Scotland).
+
 ## Deployment
 The web application is deployed on Render!
 <br>
